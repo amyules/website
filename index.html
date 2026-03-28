@@ -8,394 +8,9 @@
         <script src="https://cdn.tailwindcss.com"></script>
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./assets/styles/styles.css">
-        <!-- <style>
-            /* Local Playfair variable fonts */
-            @font-face {
-                font-family: 'PlayfairLocal';
-                src: url('Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
-                font-weight: 100 900;
-                font-style: normal;
-                font-display: swap;
-            }
-            @font-face {
-                font-family: 'PlayfairLocal';
-                src: url('Playfair_Display/PlayfairDisplay-Italic-VariableFont_wght.ttf') format('truetype');
-                font-weight: 100 900;
-                font-style: italic;
-                font-display: swap;
-            }
-
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
-
-            :root {
-                --gold: #D4AF37;
-                --dark: #1a1a1a;
-                --ivory: #FAF9F6;
-                --charcoal: #2d2d2d;
-            }
-
-            body {
-                font-family: 'Montserrat', sans-serif;
-                background: var(--dark);
-                color: var(--ivory);
-                overflow-x: hidden;
-            }
-
-            .font-display {
-                font-family: 'PlayfairLocal', 'Playfair Display', serif;
-            }
-
-            .font-elegant {
-                font-family: 'Cormorant Garamond', serif;
-            }
-
-            /* Hero Section with Parallax Effect */
-            .hero {
-                height: 100vh;
-                position: relative;
-                overflow: hidden;
-            }
-
-            .hero-bg {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(rgba(26, 26, 26, 0.5), rgba(26, 26, 26, 0.7)), 
-                            url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><rect fill="%232d2d2d"/><text x="50%" y="50%" font-size="48" fill="%23D4AF37" text-anchor="middle" opacity="0.3">EVENTO DE LUJO - IMAGEN HERO</text></svg>');
-                background-size: cover;
-                background-position: center;
-                transition: transform 0.5s ease-out;
-            }
-
-            /* Elegant Navigation: default transparent, keep blur; shadow appears on scroll */
-            nav {
-                background: transparent;
-                backdrop-filter: blur(10px);
-                transition: box-shadow 0.3s ease, backdrop-filter 0.3s ease;
-            }
-
-            nav.scrolled {
-                box-shadow: 0 4px 30px rgba(212, 175, 55, 0.12);
-            }
-
-            .nav-link {
-                position: relative;
-                transition: color 0.3s ease;
-            }
-
-            .nav-link::after {
-                content: '';
-                position: absolute;
-                bottom: -5px;
-                left: 0;
-                width: 0;
-                height: 2px;
-                background: var(--gold);
-                transition: width 0.3s ease;
-            }
-
-            .nav-link:hover::after {
-                width: 100%;
-            }
-
-            /* Gold Accent Line */
-            .gold-line {
-                width: 80px;
-                height: 2px;
-                background: var(--gold);
-                margin: 20px auto;
-            }
-
-            /* Service Cards with Hover Effect */
-            .service-card {
-                background: linear-gradient(145deg, var(--charcoal), var(--dark));
-                border: 1px solid rgba(212, 175, 55, 0.2);
-                transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-                position: relative;
-                overflow: hidden;
-            }
-
-            .service-card::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: -100%;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
-                transition: left 0.5s ease;
-            }
-
-            .service-card:hover::before {
-                left: 100%;
-            }
-
-            .service-card:hover {
-                transform: translateY(-10px);
-                border-color: var(--gold);
-                box-shadow: 0 20px 60px rgba(212, 175, 55, 0.2);
-            }
-
-            /* Gallery Grid */
-            .gallery-item {
-                position: relative;
-                overflow: hidden;
-                cursor: pointer;
-            }
-
-            .gallery-item img {
-                transition: transform 0.6s ease;
-            }
-
-            .gallery-item:hover img {
-                transform: scale(1.1);
-            }
-
-            .gallery-overlay {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(to top, rgba(26, 26, 26, 0.9), transparent);
-                opacity: 0;
-                transition: opacity 0.4s ease;
-                display: flex;
-                align-items: flex-end;
-                padding: 30px;
-            }
-
-            .gallery-item:hover .gallery-overlay {
-                opacity: 1;
-            }
-
-            /* Testimonial Card */
-            .testimonial {
-                background: rgba(45, 45, 45, 0.5);
-                border-left: 3px solid var(--gold);
-                transition: all 0.3s ease;
-            }
-
-            .testimonial:hover {
-                background: rgba(45, 45, 45, 0.8);
-                transform: translateX(10px);
-            }
-
-            /* CTA Button: dorado por defecto; hover -> transparente + shadow dorado; sin animación interna */
-            .cta-button {
-                background: var(--gold);
-                color: var(--dark);
-                font-weight: 600;
-                letter-spacing: 1px;
-                transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease, transform 0.28s ease;
-                position: relative;
-                overflow: visible;
-                border: none;
-                cursor: pointer;
-                display: inline-block;
-                transform: translateY(0);
-            }
-
-            /* Disable internal ripple/expand animation */
-            .cta-button::before { display: none; }
-
-            .cta-button:hover {
-                background: transparent;
-                color: var(--gold);
-                transform: translateY(-2px);
-                box-shadow: 0 10px 30px rgba(212, 175, 55, 0.28);
-            }
-
-            .cta-button:active {
-                transform: translateY(0px);
-            }
-
-            /* Form Styling */
-            .form-input {
-                background: rgba(45, 45, 45, 0.5);
-                border: 1px solid rgba(212, 175, 55, 0.3);
-                color: var(--ivory);
-                transition: all 0.3s ease;
-            }
-
-            .form-input:focus {
-                outline: none;
-                border-color: var(--gold);
-                background: rgba(45, 45, 45, 0.8);
-                box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
-            }
-
-            /* Scroll Reveal Animation */
-            .reveal {
-                opacity: 0;
-                transform: translateY(50px);
-                transition: all 0.8s ease;
-            }
-
-            .reveal.active {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            /* Logo Styling */
-            .logo {
-                font-size: 28px;
-                font-weight: 700;
-                letter-spacing: 3px;
-                background: linear-gradient(135deg, var(--gold), #f4d479);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-clip: text;
-            }
-
-            /* Responsive Breakpoints */
-            @media (max-width: 1024px) {
-                .gold-line {
-                    width: 60px;
-                }
-            }
-
-            @media (max-width: 768px) {
-                .hero {
-                    height: 80vh;
-                }
-
-                nav {
-                    padding: 0.5rem 0;
-                }
-
-                .gold-line {
-                    width: 50px;
-                    margin: 15px auto;
-                }
-
-                .service-card {
-                    padding: 1.5rem;
-                }
-
-                .testimonial {
-                    padding: 1.5rem;
-                }
-
-                .testimonial p {
-                    font-size: 1rem;
-                }
-
-                .gallery-item {
-                    height: 15rem;
-                }
-
-                .gallery-overlay {
-                    padding: 20px;
-                }
-
-                .gallery-overlay h4 {
-                    font-size: 1.25rem;
-                }
-
-                .gallery-overlay p {
-                    font-size: 0.875rem;
-                }
-            }
-
-            @media (max-width: 640px) {
-                body {
-                    font-size: 14px;
-                }
-
-                .hero {
-                    height: 70vh;
-                }
-
-                .cta-button {
-                    padding: 0.75rem 1.5rem;
-                    font-size: 0.75rem;
-                }
-
-                .service-card {
-                    padding: 1rem;
-                }
-
-                .testimonial {
-                    padding: 1rem;
-                }
-
-                .testimonial .text-lg {
-                    font-size: 1rem;
-                }
-
-                .gallery-item {
-                    height: 12rem;
-                }
-
-                .gallery-overlay {
-                    padding: 15px;
-                }
-
-                .gallery-overlay h4 {
-                    font-size: 1rem;
-                }
-
-                .gallery-overlay p {
-                    font-size: 0.75rem;
-                }
-
-                .form-input {
-                    padding: 0.75rem;
-                    font-size: 14px;
-                }
-            }
-            .accordion-header {
-                background: linear-gradient(to right, #2d2d2d, #1a1a1a);
-                cursor: pointer;
-            }
-
-            .accordion-content {
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.4s ease;
-            }
-
-            .accordion-item.active .accordion-content {
-                max-height: 1000px;
-            }
-            .social-link {
-                position: relative;
-                padding: 0.4rem 0.75rem;
-                border-radius: 999px;
-                transition: 
-                    box-shadow 0.28s ease,
-                    transform 0.28s ease,
-                    color 0.28s ease;
-            }
-
-            .social-link:hover {
-                color: var(--gold);
-                transform: translateY(-2px);
-                box-shadow: 0 10px 30px rgba(212, 175, 55, 0.28);
-            }
-
-            .social-link img {
-                transition: 
-                    opacity 0.28s ease,
-                    filter 0.28s ease;
-            }
-
-            .social-link:hover img {
-                opacity: 1;
-                filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.6));
-            }
-        </style> -->
     </head>
     <body>
-        
-        <!-- ================= NAVBAR ================= -->
+        <!-- NAVBAR -->
             <header class="fixed top-0 left-0 w-full z-50">
                 <nav class="w-full backdrop-blur-sm">
                     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-6 flex justify-center gap-4 sm:gap-8 lg:gap-16 text-xs sm:text-sm tracking-widest uppercase text-ivory">
@@ -417,7 +32,7 @@
                 muted
                 loop
                 playsinline
-                preload="auto"
+                preload="metadata"
             >
                 <source src="https://pub-d1158e62964b40a19b887fe71af59b57.r2.dev/HACIENDA_1_ultra_small.mp4" type="video/mp4">
             </video>
@@ -448,15 +63,23 @@
             </div>
         </section>
 
-        <!-- About Section -->
-        <section
-            class="relative min-h-screen flex items-center bg-cover bg-center bg-fixed"
-            style="background-image: url('./assets/images/Rosario.webp');">
+        <!-- About Section (imagen en capa: evita bg-fixed, problemático en iOS/móviles) -->
+        <section class="relative isolate flex min-h-screen items-center overflow-hidden">
+
+            <img
+                src="./assets/images/Rosario.webp"
+                alt=""
+                width="1920"
+                height="1080"
+                decoding="async"
+                loading="lazy"
+                class="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover object-center"
+            >
 
             <!-- Overlay -->
-            <div class="absolute inset-0 bg-black/55 sm:bg-black/60"></div>
+            <div class="absolute inset-0 z-[1] bg-black/55 sm:bg-black/60"></div>
 
-            <div class="relative container mx-auto px-4 sm:px-6 pt-20 sm:pt-32">
+            <div class="relative z-10 container mx-auto px-4 sm:px-6 pt-20 sm:pt-32">
                 <div class="max-w-4xl mx-auto text-center reveal">
                     <h2 class="font-display text-3xl sm:text-4xl md:text-5xl mb-4 sm:mb-6">
                         Elegancia sin Concesiones
@@ -472,7 +95,7 @@
                 </div>
             </div>
             <!-- Microcaption -->
-            <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10">
+            <div class="absolute bottom-6 left-1/2 z-10 -translate-x-1/2">
                 <span class="text-xs sm:text-sm tracking-widest uppercase text-[#D4AF37]/70">
                     Salón principal · Amyules Eventos
                 </span>
@@ -691,7 +314,7 @@
             </div>
         </section>
 
-        <!-- Contact Section // mensaje a whatsapp -->
+        <!-- Contacto -->
         <section id="contacto" class="py-16 sm:py-24 bg-gradient-to-b from-[#2d2d2d] to-[#1a1a1a]">
             <div class="container mx-auto px-4 sm:px-6">
                 <div class="max-w-3xl mx-auto">
@@ -703,151 +326,70 @@
                         </p>
                     </div>
 
-                    <!-- <form class="space-y-4 sm:space-y-6 reveal">
+                    <form id="contactForm" class="space-y-4 sm:space-y-6 reveal">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                             <div>
-                                <input type="text" placeholder="Nombre Completo" 
-                                    class="form-input w-full px-4 sm:px-6 py-3 sm:py-4 rounded-lg text-sm">
+                                <input type="text"
+                                    id="nombre"
+                                    name="nombre"
+                                    placeholder="Nombre Completo *"
+                                    class="form-input w-full px-4 sm:px-6 py-3 sm:py-4 rounded-lg text-sm"
+                                    required>
                             </div>
                             <div>
-                                <input type="email" placeholder="Correo Electrónico" 
-                                    class="form-input w-full px-4 sm:px-6 py-3 sm:py-4 rounded-lg text-sm">
+                                <input type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="Correo Electrónico *"
+                                    class="form-input w-full px-4 sm:px-6 py-3 sm:py-4 rounded-lg text-sm"
+                                    required>
                             </div>
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                             <div>
-                                <input type="tel" placeholder="Teléfono" 
-                                    class="form-input w-full px-4 sm:px-6 py-3 sm:py-4 rounded-lg text-sm">
+                                <input type="tel"
+                                    id="telefono"
+                                    name="telefono"
+                                    placeholder="Teléfono *"
+                                    class="form-input w-full px-4 sm:px-6 py-3 sm:py-4 rounded-lg text-sm"
+                                    required>
                             </div>
                             <div>
-                                <select class="form-input w-full px-4 sm:px-6 py-3 sm:py-4 rounded-lg text-sm">
-                                    <option>Tipo de Evento</option>
-                                    <option>Boda de Lujo</option>
-                                    <option>15 Años de Elite</option>
-                                    <option>Gala Privada</option>
-                                    <option>Celebración Exclusiva</option>
-                                    <option>Otro</option>
+                                <select id="tipoEvento"
+                                    name="tipoEvento"
+                                    class="form-input w-full px-4 sm:px-6 py-3 sm:py-4 rounded-lg text-sm"
+                                    required>
+                                    <option value="">Tipo de Evento *</option>
+                                    <option value="Boda de Lujo">Boda de Lujo</option>
+                                    <option value="15 Años de Elite">15 Años de Elite</option>
+                                    <option value="Gala Privada">Gala Privada</option>
+                                    <option value="Celebración Exclusiva">Celebración Exclusiva</option>
+                                    <option value="Otro">Otro</option>
                                 </select>
                             </div>
                         </div>
 
                         <div>
-                            <textarea placeholder="Cuéntenos sobre su visión..." rows="5"
-                                    class="form-input w-full px-4 sm:px-6 py-3 sm:py-4 rounded-lg resize-none text-sm"></textarea>
+                            <textarea id="mensaje"
+                                name="mensaje"
+                                placeholder="Cuéntenos sobre su visión (opcional)..."
+                                rows="5"
+                                class="form-input w-full px-4 sm:px-6 py-3 sm:py-4 rounded-lg resize-none text-sm"></textarea>
+                            <p class="text-gray-500 text-xs mt-2">* Campos obligatorios</p>
                         </div>
 
-                        <div class="text-center">
-                            <button type="submit" class="cta-button px-8 sm:px-12 py-3 sm:py-4 rounded-full text-xs sm:text-sm uppercase tracking-widest">
+                        <div class="text-center pt-2">
+                            <button type="submit"
+                                class="cta-button px-8 sm:px-12 py-3 sm:py-4 rounded-full text-xs sm:text-sm uppercase tracking-widest font-semibold">
                                 Agendar Visita
                             </button>
+                            <p class="text-gray-400 text-xs sm:text-sm mt-4 italic">
+                                Al enviar, se preparará un mensaje para WhatsApp con su información
+                            </p>
                         </div>
-                    </form> -->
-                    <!-- <form id="contactForm" class="space-y-4 sm:space-y-6 reveal">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-        <div>
-            <input type="text" id="nombre" placeholder="Nombre Completo" 
-                class="form-input w-full px-4 sm:px-6 py-3 sm:py-4 rounded-lg text-sm" required>
-        </div>
-        <div>
-            <input type="email" id="email" placeholder="Correo Electrónico" 
-                class="form-input w-full px-4 sm:px-6 py-3 sm:py-4 rounded-lg text-sm" required>
-        </div>
-    </div>
+                    </form>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-        <div>
-            <input type="tel" id="telefono" placeholder="Teléfono" 
-                class="form-input w-full px-4 sm:px-6 py-3 sm:py-4 rounded-lg text-sm" required>
-        </div>
-        <div>
-            <select id="tipoEvento" class="form-input w-full px-4 sm:px-6 py-3 sm:py-4 rounded-lg text-sm" required>
-                <option value="">Tipo de Evento</option>
-                <option value="Boda de Lujo">Boda de Lujo</option>
-                <option value="15 Años de Elite">15 Años de Elite</option>
-                <option value="Gala Privada">Gala Privada</option>
-                <option value="Celebración Exclusiva">Celebración Exclusiva</option>
-                <option value="Otro">Otro</option>
-            </select>
-        </div>
-    </div>
-
-    <div>
-        <textarea id="mensaje" placeholder="Cuéntenos sobre su visión..." rows="5"
-                class="form-input w-full px-4 sm:px-6 py-3 sm:py-4 rounded-lg resize-none text-sm"></textarea>
-    </div>
-
-    <div class="text-center">
-        <button type="submit" class="cta-button px-8 sm:px-12 py-3 sm:py-4 rounded-full text-xs sm:text-sm uppercase tracking-widest">
-            Agendar Visita
-        </button>
-    </div>
-</form> -->
-
-<form id="contactForm" class="space-y-4 sm:space-y-6 reveal">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-        <div>
-            <input type="text" 
-                   id="nombre" 
-                   name="nombre"
-                   placeholder="Nombre Completo *" 
-                   class="form-input w-full px-4 sm:px-6 py-3 sm:py-4 rounded-lg text-sm"
-                   required>
-        </div>
-        <div>
-            <input type="email" 
-                   id="email" 
-                   name="email"
-                   placeholder="Correo Electrónico *" 
-                   class="form-input w-full px-4 sm:px-6 py-3 sm:py-4 rounded-lg text-sm"
-                   required>
-        </div>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-        <div>
-            <input type="tel" 
-                   id="telefono" 
-                   name="telefono"
-                   placeholder="Teléfono *" 
-                   class="form-input w-full px-4 sm:px-6 py-3 sm:py-4 rounded-lg text-sm"
-                   required>
-        </div>
-        <div>
-            <select id="tipoEvento" 
-                    name="tipoEvento"
-                    class="form-input w-full px-4 sm:px-6 py-3 sm:py-4 rounded-lg text-sm"
-                    required>
-                <option value="">Tipo de Evento *</option>
-                <option value="Boda de Lujo">Boda de Lujo</option>
-                <option value="15 Años de Elite">15 Años de Elite</option>
-                <option value="Gala Privada">Gala Privada</option>
-                <option value="Celebración Exclusiva">Celebración Exclusiva</option>
-                <option value="Otro">Otro</option>
-            </select>
-        </div>
-    </div>
-
-    <div>
-        <textarea id="mensaje" 
-                  name="mensaje"
-                  placeholder="Cuéntenos sobre su visión (opcional)..." 
-                  rows="5"
-                  class="form-input w-full px-4 sm:px-6 py-3 sm:py-4 rounded-lg resize-none text-sm"></textarea>
-        <p class="text-gray-500 text-xs mt-2">* Campos obligatorios</p>
-    </div>
-
-    <div class="text-center pt-2">
-        <button type="submit" 
-                class="cta-button px-8 sm:px-12 py-3 sm:py-4 rounded-full text-xs sm:text-sm uppercase tracking-widest font-semibold">
-            Agendar Visita 
-        </button>
-        
-        <p class="text-gray-400 text-xs sm:text-sm mt-4 italic">
-            Al enviar, se preparará un mensaje para WhatsApp con su información
-        </p>
-    </div>
-</form>
                     <div class="mt-12 sm:mt-16 text-center reveal">
                         <p class="text-gray-400 mb-3 sm:mb-4 text-sm sm:text-base">O contáctenos directamente:</p>
                         <div class="space-y-2">
@@ -862,7 +404,7 @@
         <!-- Footer -->
         <footer class="bg-[#1a1a1a] border-t border-[#D4AF37]/20 py-8 sm:py-12">
             <div class="container mx-auto px-4 sm:px-6">
-                <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-6 sm:mb-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-6 sm:mb-8">
                     <div class="text-center sm:text-left">
                         <h3 class="font-display text-xl sm:text-2xl mb-3 sm:mb-4 text-[#D4AF37]">MAISON AMYULES</h3>
                         <p class="text-gray-400 leading-relaxed text-sm sm:text-base">
@@ -952,7 +494,7 @@
                     <img id="galleryImage"
                         src=""
                         alt=""
-                        class="w-full h-[60vh] object-cover opacity-0 transition-opacity duration-700 ease-in-out opacity-100">
+                        class="w-full h-[60vh] object-cover opacity-100 transition-opacity duration-700 ease-in-out">
 
                     <!-- Controls -->
                     <button id="prevImage"
@@ -969,227 +511,5 @@
         </div>
 
         <script src="./assets/scripts/index.js"></script>
-        <!-- <script>
-            // Smooth Scroll
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                });
-            });
-
-            // Navbar scroll effect
-            const nav = document.querySelector('nav');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 100) {
-                    nav.classList.add('scrolled');
-                } else {
-                    nav.classList.remove('scrolled');
-                }
-            });
-
-            // Parallax effect for hero background
-            const heroBg = document.querySelector('.hero-bg');
-            window.addEventListener('scroll', () => {
-                const scrolled = window.pageYOffset;
-                heroBg.style.transform = `translateY(${scrolled * 0.5}px)`;
-            });
-
-            // Scroll reveal animation
-            const reveals = document.querySelectorAll('.reveal');
-            
-            const revealOnScroll = () => {
-                reveals.forEach(element => {
-                    const elementTop = element.getBoundingClientRect().top;
-                    const windowHeight = window.innerHeight;
-                    
-                    if (elementTop < windowHeight - 100) {
-                        element.classList.add('active');
-                    }
-                });
-            };
-
-            window.addEventListener('scroll', revealOnScroll);
-            revealOnScroll(); // Initial check
-
-            // Form submission
-            const form = document.querySelector('form');
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                alert('Gracias por su interés. Nos pondremos en contacto con usted en breve para agendar su consulta privada.');
-                form.reset();
-            });
-
-            // Add stagger animation to service cards
-            const serviceCards = document.querySelectorAll('.service-card');
-            serviceCards.forEach((card, index) => {
-                card.style.transitionDelay = `${index * 0.1}s`;
-            });
-
-            // Add stagger animation to gallery items
-            const galleryItems = document.querySelectorAll('.gallery-item');
-            
-            galleryItems.forEach((item, index) => {
-                item.style.transitionDelay = `${index * 0.1}s`;
-            });
-
-            const galleryData = {
-                "boda-imperial": {
-                    title: "Boda Imperial",
-                    sections: [
-                        {
-                            title: "Salón & Decoración",
-                            images: [
-                                "https://picsum.photos/800/500?1",
-                                "https://picsum.photos/800/500?2"
-                            ]
-                        },
-                        {
-                            title: "Mesa Principal",
-                            images: [
-                                "https://picsum.photos/800/500?3"
-                            ]
-                        }
-                    ]
-                },
-                "quince-sofia": {
-                    title: "Quinceañera Sofía",
-                    sections: [
-                        {
-                            title: "Decoración General",
-                            images: [
-                                "https://picsum.photos/800/500?4",
-                                "https://picsum.photos/800/500?5"
-                            ]
-                        }
-                    ]
-                }
-            };
-
-            // ================= GALLERY MODAL + CAROUSEL =================
-
-            const modal = document.getElementById('galleryModal');
-            const modalImage = document.getElementById('galleryImage');
-            const closeGallery = document.getElementById('closeGallery');
-            const nextBtn = document.getElementById('nextImage');
-            const prevBtn = document.getElementById('prevImage');
-
-            let currentGallery = [];
-            let currentIndex = 0;
-
-            function updateImage() {
-                modalImage.classList.remove('opacity-100');
-                modalImage.classList.add('opacity-0');
-
-                const img = new Image();
-                img.src = currentGallery[currentIndex];
-
-                img.onload = () => {
-                    setTimeout(() => {
-                        modalImage.src = img.src;
-                        modalImage.classList.remove('opacity-0');
-                        modalImage.classList.add('opacity-100');
-                        updateDots && updateDots();
-                    }, 100);
-                };
-            }
-
-            function preloadGallery(images) {
-                images.forEach(src => {
-                    const img = new Image();
-                    img.src = src;
-                });
-            }
-
-
-            // Gallery image sets (replace with real images later)
-            const galleries = {
-                boda: [
-                    'https://picsum.photos/1200/800?1',
-                    'https://picsum.photos/1200/800?2',
-                    'https://picsum.photos/1200/800?3',
-                    'https://picsum.photos/1200/800?4',
-                    'https://picsum.photos/1200/800?5'
-                ],
-                15: [
-                    'https://picsum.photos/1200/800?6',
-                    'https://picsum.photos/1200/800?7',
-                    'https://picsum.photos/1200/800?8',
-                    'https://picsum.photos/1200/800?9',
-                    'https://picsum.photos/1200/800?10'
-                ],
-                gala: [
-                    'https://picsum.photos/1200/800?11',
-                    'https://picsum.photos/1200/800?12',
-                    'https://picsum.photos/1200/800?13',
-                    'https://picsum.photos/1200/800?14',
-                    'https://picsum.photos/1200/800?15'
-                ],
-                aniversario: [
-                    'https://picsum.photos/1200/800?16',
-                    'https://picsum.photos/1200/800?17',
-                    'https://picsum.photos/1200/800?18',
-                    'https://picsum.photos/1200/800?19',
-                    'https://picsum.photos/1200/800?20'
-                ],
-                detalles: [
-                    'https://picsum.photos/1200/800?21',
-                    'https://picsum.photos/1200/800?22',
-                    'https://picsum.photos/1200/800?23',
-                    'https://picsum.photos/1200/800?24',
-                    'https://picsum.photos/1200/800?25'
-                ],
-                graduacion: [
-                    'https://picsum.photos/1200/800?26',
-                    'https://picsum.photos/1200/800?27',
-                    'https://picsum.photos/1200/800?28',
-                    'https://picsum.photos/1200/800?29',
-                    'https://picsum.photos/1200/800?30'
-                ]
-            };
-
-            // Open modal
-            galleryItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    const key = item.dataset.gallery;
-                    currentGallery = galleries[key];
-                    currentIndex = 0;
-
-                    preloadGallery(currentGallery); // 👈 PRE-CARGA COMPLETA
-                    updateImage();
-
-                    modal.classList.remove('hidden');
-                    modal.classList.add('flex');
-                    document.body.style.overflow = 'hidden';
-                });
-            });
-
-
-            // Controls
-            nextBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex + 1) % currentGallery.length;
-                updateImage();
-            });
-
-            prevBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
-                updateImage();
-            });
-
-            // Close modal
-            closeGallery.addEventListener('click', closeModal);
-            modal.addEventListener('click', e => {
-                if (e.target === modal) closeModal();
-            });
-
-            function closeModal() {
-                modal.classList.add('hidden');
-                modal.classList.remove('flex');
-                document.body.style.overflow = '';
-            }
-        </script> -->
     </body>
 </html>
