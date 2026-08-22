@@ -519,6 +519,13 @@
             </div>
         </div>
 
-        <script src="./assets/scripts/index.js"></script>
+        <!-- 
+            Evitar que se repita: cache-busting en el script
+            Para que esto no te vuelva a pasar: en index.html, cambia `<script src="./assets/scripts/index.js"></script>` por algo como 
+            `<script src="./assets/scripts/index.js?v=2"></script>`, incrementando el `v=` en cada cambio futuro. Al ser una URL distinta
+             para Cloudflare, siempre pide una copia fresca sin depender de purgar caché manualmente. 
+        -->
+
+        <script src="./assets/scripts/index.js?v=2"></script>
     </body>
 </html>
