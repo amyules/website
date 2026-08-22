@@ -211,18 +211,18 @@
 
     const galleries = {
         boda: [
-            'https://picsum.photos/1200/800?1',
-            'https://picsum.photos/1200/800?2',
-            'https://picsum.photos/1200/800?3',
-            'https://picsum.photos/1200/800?4',
-            'https://picsum.photos/1200/800?5',
+            'https://pub-d1158e62964b40a19b887fe71af59b57.r2.dev/images/Weedings/_Z6N2069.JPG',
+            'https://pub-d1158e62964b40a19b887fe71af59b57.r2.dev/images/Weedings/_NZ64760.JPG',
+            'https://pub-d1158e62964b40a19b887fe71af59b57.r2.dev/images/Weedings/ST2A9450.JPG',
+            'https://pub-d1158e62964b40a19b887fe71af59b57.r2.dev/images/Weedings/ST2A9198.JPG',
+            'https://pub-d1158e62964b40a19b887fe71af59b57.r2.dev/images/Weedings/N6Z_0670.JPG',
         ],
         15: [
-            'https://picsum.photos/1200/800?6',
-            'https://picsum.photos/1200/800?7',
-            'https://picsum.photos/1200/800?8',
-            'https://picsum.photos/1200/800?9',
-            'https://picsum.photos/1200/800?10',
+            'https://pub-d1158e62964b40a19b887fe71af59b57.r2.dev/images/15s/_Z6N7220.JPG',
+            'https://pub-d1158e62964b40a19b887fe71af59b57.r2.dev/images/15s/ST2A2656.JPG',
+            'https://pub-d1158e62964b40a19b887fe71af59b57.r2.dev/images/15s/ed5b5e4e-a681-41ea-8c8b-0462baee8675.jpg',
+            'https://pub-d1158e62964b40a19b887fe71af59b57.r2.dev/images/15s/N6Z_8497.JPG',
+            'https://pub-d1158e62964b40a19b887fe71af59b57.r2.dev/images/15s/_NZ67355.JPG',
         ],
         gala: [
             'https://picsum.photos/1200/800?11',
