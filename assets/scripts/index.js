@@ -20,14 +20,17 @@
             } else {
                 nav.classList.remove('scrolled');
             }
-        });
+        }, { passive: true });
     }
 
     const heroBg = document.querySelector('.hero-bg');
     if (heroBg) {
-        window.addEventListener('scroll', () => {
-            heroBg.style.transform = `translateY(${window.pageYOffset * 0.5}px)`;
-        });
+        // Parallax solo en desktop; en móvil es innecesario y costoso
+        if (window.matchMedia('(min-width: 768px) and (prefers-reduced-motion: no-preference)').matches) {
+            window.addEventListener('scroll', () => {
+                heroBg.style.transform = `translateY(${window.pageYOffset * 0.5}px)`;
+            }, { passive: true });
+        }
     }
 
     const reveals = document.querySelectorAll('.reveal');
@@ -39,7 +42,7 @@
             }
         });
     };
-    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('scroll', revealOnScroll, { passive: true });
     revealOnScroll();
 
     const contactForm = document.getElementById('contactForm');
@@ -187,8 +190,12 @@
     let currentIndex = 0;
 
     function updateImage() {
+        const loader = document.getElementById('galleryLoader');
+
+        // Mostrar loader y ocultar imagen
         modalImage.classList.remove('opacity-100');
         modalImage.classList.add('opacity-0');
+        if (loader) loader.classList.remove('hidden-loader');
 
         const img = new Image();
         img.src = currentGallery[currentIndex];
@@ -198,15 +205,29 @@
                 modalImage.src = img.src;
                 modalImage.classList.remove('opacity-0');
                 modalImage.classList.add('opacity-100');
+                // Ocultar loader con fade
+                if (loader) loader.classList.add('hidden-loader');
             }, 100);
         };
+
+        img.onerror = () => {
+            // Si falla la carga, ocultar el loader igual
+            if (loader) loader.classList.add('hidden-loader');
+        };
+
+        // Precarga solo la imagen siguiente (no todo el set)
+        const nextIndex = (currentIndex + 1) % currentGallery.length;
+        if (nextIndex !== currentIndex) {
+            const preNext = new Image();
+            preNext.src = currentGallery[nextIndex];
+        }
     }
 
+    // Precarga solo la primera imagen al abrir la galería
     function preloadGallery(images) {
-        images.forEach((src) => {
-            const pre = new Image();
-            pre.src = src;
-        });
+        if (!images.length) return;
+        const pre = new Image();
+        pre.src = images[0];
     }
 
     const galleries = {
@@ -291,6 +312,12 @@
         modal.classList.add('hidden');
         modal.classList.remove('flex');
         document.body.style.overflow = '';
+        // Resetear loader para la próxima apertura
+        const loader = document.getElementById('galleryLoader');
+        if (loader) loader.classList.remove('hidden-loader');
+        modalImage.src = '';
+        modalImage.classList.remove('opacity-100');
+        modalImage.classList.add('opacity-0');
     }
 
     closeGallery.addEventListener('click', closeModal);

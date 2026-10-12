@@ -1,14 +1,14 @@
 /* Local Playfair variable fonts */
             @font-face {
                 font-family: 'PlayfairLocal';
-                src: url('Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
+                src: url('../fonts/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
                 font-weight: 100 900;
                 font-style: normal;
                 font-display: swap;
             }
             @font-face {
                 font-family: 'PlayfairLocal';
-                src: url('Playfair_Display/PlayfairDisplay-Italic-VariableFont_wght.ttf') format('truetype');
+                src: url('../fonts/Playfair_Display/PlayfairDisplay-Italic-VariableFont_wght.ttf') format('truetype');
                 font-weight: 100 900;
                 font-style: italic;
                 font-display: swap;
@@ -382,3 +382,37 @@
             }
 
             
+
+            /* Gallery loader */
+            #galleryLoader {
+                opacity: 1;
+                transition: opacity 0.4s ease;
+            }
+
+            #galleryLoader.hidden-loader {
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            /* Logo pulse loader — carrusel */
+            .logo-pulse {
+                animation: logo-pulse 2s ease-in-out infinite;
+            }
+
+            @keyframes logo-pulse {
+                0%   { transform: scale(1);    filter: drop-shadow(0 0 0px rgba(212,175,55,0)); }
+                50%  { transform: scale(1.06); filter: drop-shadow(0 0 18px rgba(212,175,55,0.7)); }
+                100% { transform: scale(1);    filter: drop-shadow(0 0 0px rgba(212,175,55,0)); }
+            }
+
+            /* Barra de progreso infinita mientras carga */
+            .gallery-progress-bar {
+                width: 0%;
+                animation: gallery-bar 1.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            }
+
+            @keyframes gallery-bar {
+                0%   { width: 0%;   margin-left: 0%; }
+                50%  { width: 70%;  margin-left: 15%; }
+                100% { width: 0%;   margin-left: 100%; }
+            }

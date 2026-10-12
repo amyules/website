@@ -8,6 +8,9 @@
         <script src="https://cdn.tailwindcss.com"></script>
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./assets/styles/styles.css">
+        <!-- Precarga crítica: logo hero (LCP) y fuente local -->
+        <link rel="preload" href="./assets/images/MaisonFinal.png" as="image">
+        <link rel="preload" href="./assets/fonts/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin="anonymous">
     </head>
     <body>
         <!-- NAVBAR -->
@@ -26,16 +29,28 @@
         <section id="inicio" class="relative h-screen flex items-center justify-center text-center overflow-hidden">
 
             <!-- Video Background -->
+            <!-- Video Background: solo desktop, en móvil se usa imagen estática -->
             <video
-                class="absolute inset-0 w-full h-full object-cover"
+                class="absolute inset-0 w-full h-full object-cover hidden md:block"
                 autoplay
                 muted
                 loop
                 playsinline
-                preload="metadata"
+                preload="none"
+                poster="./assets/images/MaisonFinal.png"
             >
                 <source src="https://pub-d1158e62964b40a19b887fe71af59b57.r2.dev/HACIENDA_1_ultra_small.mp4" type="video/mp4">
             </video>
+            <!-- Imagen hero para móvil usando imagen local (sin dependencia de R2) -->
+            <img
+                src="./assets/images/Rosario.webp"
+                alt=""
+                fetchpriority="high"
+                decoding="async"
+                width="1920"
+                height="1080"
+                class="absolute inset-0 w-full h-full object-cover md:hidden"
+            >
 
             <!-- Dark Luxury Overlay -->
             <div class="absolute inset-0 bg-black/70"></div>
@@ -47,6 +62,9 @@
                 <img
                     src="./assets/images/MaisonFinal.png"
                     alt="Maison Amyules"
+                    fetchpriority="high"
+                    width="400"
+                    height="200"
                     class="mx-auto mb-6 sm:mb-8"
                 >
 
@@ -142,6 +160,9 @@
                             <img
                                 src="https://pub-d1158e62964b40a19b887fe71af59b57.r2.dev/images/15s/7881-1.JPG"
                                 alt="15 Años de Elite"
+                                loading="lazy"
+                                decoding="async"
+                                width="800" height="600"
                                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                             >
                             <div class="absolute inset-0 bg-black/30 transition-all duration-500 group-hover:bg-black/50"></div>
@@ -197,7 +218,12 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                     <!-- Gallery Item 1 -->
                     <div class="gallery-item h-60 sm:h-72 lg:h-80 rounded-lg overflow-hidden reveal" data-gallery="boda">
-                        <img src="https://pub-d1158e62964b40a19b887fe71af59b57.r2.dev/images/Weedings/_Z6N2226.JPG" alt="Boda de Lujo" class="w-full h-full object-cover">
+                        <img src="https://pub-d1158e62964b40a19b887fe71af59b57.r2.dev/images/Weedings/_Z6N2226.JPG"
+                             alt="Boda de Lujo"
+                             loading="lazy"
+                             decoding="async"
+                             width="800" height="600"
+                             class="w-full h-full object-cover">
                         <div class="gallery-overlay">
                             <div>
                                 <h4 class="font-display text-2xl mb-2">Bodas Imperiales</h4>
@@ -208,7 +234,12 @@
 
                     <!-- Gallery Item 2 -->
                     <div class="gallery-item h-60 sm:h-72 lg:h-80 rounded-lg overflow-hidden reveal" data-gallery="15">
-                        <img src="https://pub-d1158e62964b40a19b887fe71af59b57.r2.dev/images/15s/ST2A2581.JPG" alt="15 Años Elite" class="w-full h-full object-cover">
+                        <img src="https://pub-d1158e62964b40a19b887fe71af59b57.r2.dev/images/15s/ST2A2581.JPG"
+                             alt="15 Años Elite"
+                             loading="lazy"
+                             decoding="async"
+                             width="800" height="600"
+                             class="w-full h-full object-cover">
                         <div class="gallery-overlay">
                             <div>
                                 <h4 class="font-display text-2xl mb-2">Quinces</h4>
@@ -504,6 +535,23 @@
                         src=""
                         alt=""
                         class="w-full h-[60vh] object-cover opacity-100 transition-opacity duration-700 ease-in-out">
+
+                    <!-- Loader: visible mientras carga la imagen -->
+                    <div id="galleryLoader"
+                         class="absolute inset-0 flex flex-col items-center justify-center bg-[#1a1a1a] pointer-events-none"
+                         aria-hidden="true">
+                        <!-- Logo con efecto pulse -->
+                        <img
+                            src="./assets/images/MaisonFinal.png"
+                            alt=""
+                            class="logo-pulse w-32 sm:w-40 opacity-90"
+                            style="filter: brightness(0) saturate(100%) invert(75%) sepia(40%) saturate(500%) hue-rotate(5deg) brightness(95%)"
+                        >
+                        <!-- Barra de progreso animada -->
+                        <div class="mt-6 w-32 h-px bg-[#2d2d2d] overflow-hidden rounded-full">
+                            <div class="h-full bg-[#D4AF37] rounded-full gallery-progress-bar"></div>
+                        </div>
+                    </div>
 
                     <!-- Controls -->
                     <button id="prevImage"
